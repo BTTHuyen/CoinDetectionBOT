@@ -26,7 +26,7 @@ class Server:
 
             # timer
             lastUpdate = time.time()
-            
+
             # get new messages
             messagestack = bot.getNewMessages()
 
@@ -57,9 +57,17 @@ class Server:
                 numbers = yolo.start()
                 bot.sendMessage("These are the Coins I found:", photos['from']['id'])
                 # print all resulting boxes add them up and send to Telegram
-                #for n in numbers:
-                    #bot.sendMessage(str(n),photos['from']['id'])
-                bot.sendImage( photos['from']['id'])
+                coinSum = 0
+                for n in numbers
+:
+
+                    if not str(n)== "" and "%" not in n:
+                        print(str(n))
+                        bot.sendMessage(str(n)+" Cent", photos['from']['id'])
+                        coinSum = coinSum+int(n)
+
+                bot.sendMessage("Your Sum is: " +str(coinSum) +" Cent", photos['from']['id'])
+
 
 
 

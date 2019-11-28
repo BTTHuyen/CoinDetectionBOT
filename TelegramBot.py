@@ -1,7 +1,7 @@
 import json
 import ssl
 import urllib.request
-
+import requests
 class TelegramBot:
 
     messageId = 0
@@ -64,8 +64,15 @@ class TelegramBot:
         new_days.close()
 
         print("file downloaded!\n")
-
-    # send text to chatid
+    
+    def sendImage(self,chat_id):
+        url = "https://api.telegram.org/bot" + self.botToken + "/sendPhoto";
+        files = {'photo': open('darknet/predictions.jpg', 'rb')}
+        data = {'chat_id' : chat_id}
+        r= requests.post(url, files=files, data=data)
+        print(r.status_code, r.reason, r.content)
+    
+      # send text to chatid
     def sendMessage(self ,text, chatid):
 
         print("sending message...\n")
